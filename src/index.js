@@ -1,9 +1,14 @@
 import express from "express";
 import helmet from "helmet";
 import logger from "morgan";
+import mongoose from "mongoose";
+import { config } from "./config/keys.js";
 import { userRt } from "./routes/userRt.js";
 
 (async () => {
+    await mongoose.connect(config.MONGO_URI)
+    .then(() => console.log("MongoDB is now Connected!"))
+    .catch((error) => console.log(error));
     const app = express();
     app.use(helmet());
 

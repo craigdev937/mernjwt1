@@ -1,8 +1,11 @@
 import express from "express";
-import { HomeIndex } from "../controllers/userCon.js";
+import { PEOPLE } from "../controllers/userCon.js";
 
 export const userRt = express.Router();
-    userRt.get("/", HomeIndex);
+    userRt.post("/register", PEOPLE.Register);
+    userRt.post("/login", PEOPLE.Login);
+    userRt.post("/quote", PEOPLE.PostQuote);
+    userRt.get("/quote", PEOPLE.GetQuote);
 
 
 
